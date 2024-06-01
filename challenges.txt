@@ -1,0 +1,22 @@
+First, it doesn't supported imprt os in windows for tts.
+we have to use pyttsx3, whih have features such as speech speed, 
+volume, 2 different voices (male and female), but not different langueges.
+
+i then tried it with gtts and pygame which offers different languages 
+but it do not have features such as speech speed, 
+volume, different voices.
+
+i then tried to deploy it using flask,
+The RuntimeError: run loop already started error occurs because 
+pyttsx3 tries to run its event loop while the Flask server is 
+also running an event loop. This can be resolved by running the 
+text-to-speech engine asynchronously using a separate thread or 
+process.
+
+The RuntimeError: run loop already started persists because pyttsx3
+uses an event loop that conflicts with the threading model of 
+Flask. To resolve this, you can use multiprocessing instead of 
+threading, which allows the text-to-speech engine to run in a 
+separate process and avoids event loop conflicts.
+nothing is working other than speak and that too, very late after
+ pressing the button
